@@ -6,15 +6,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MainCintroller extends HttpServlet {
+public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-
-		request
-			.getRequestDispatcher("/WEB-INF/views/main/index.jsp")
-			.forward(request, response);
+		String action = request.getParameter("a");
+		
+		if("writeform".equals(action)) {
+			
+		}else {
+			request
+				.getRequestDispatcher("WEB-INF/views/board/list.jsp")
+				.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

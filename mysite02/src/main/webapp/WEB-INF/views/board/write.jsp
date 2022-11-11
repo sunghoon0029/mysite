@@ -4,7 +4,7 @@
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -15,7 +15,7 @@
 				<li><a href="">회원가입</a><li>
 				<li><a href="">회원정보수정</a><li>
 				<li><a href="">로그아웃</a><li>
-				<li>님 안녕하세요 ^^;</li>
+				<li>님 안녕하세요 ^^</li>
 			</ul>
 		</div>
 		<div id="content">
@@ -46,7 +46,7 @@
 		</div>
 		<div id="navigation">
 			<ul>
-				<li><a href="">안대혁</a></li>
+				<li><a href="">조성훈</a></li>
 				<li><a href="">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
