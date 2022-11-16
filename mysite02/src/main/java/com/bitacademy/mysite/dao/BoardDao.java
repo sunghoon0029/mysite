@@ -35,10 +35,24 @@ public class BoardDao {
 
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				String tile = rs.getString(1);
+				String title = rs.getString(1);
+				String contents = rs.getString(2);
+				Long hit = rs.getLong(3);
+				String regDate = rs.getString(4);
+				Long groupNo = rs.getLong(5);
+				Long orderNo = rs.getLong(6);
+				Long depth = rs.getLong(7);
+				Long userNo = rs.getLong(8);
 				
 				result = new BoardVo();
-//				result.setTitle(title);
+				result.setTitle(title);
+				result.setContents(contents);
+				result.setHit(hit);
+				result.setRegDate(regDate);
+				result.setGroupNo(groupNo);
+				result.setOrderNo(orderNo);
+				result.setDepth(depth);
+				result.setUserNo(userNo);
 			}
 			
 		} catch (SQLException e) {
@@ -69,12 +83,16 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "insert into user values (null, ?, ?, ?, ?, now())";
+			String sql = "insert into board values (null, ?, ?, ?, now(), ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, vo.getName());
-//			pstmt.setString(2, vo.getEmail());
-//			pstmt.setString(3, vo.getPassword());
-//			pstmt.setString(4, vo.getGender());
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContents());
+			pstmt.setLong(3, vo.getHit());
+			pstmt.setString(4, vo.getRegDate());
+			pstmt.setLong(5, vo.getGroupNo());
+			pstmt.setLong(6, vo.getOrderNo());
+			pstmt.setLong(7, vo.getDepth());
+			pstmt.setLong(8, vo.getUserNo());
 			
 			int count = pstmt.executeUpdate();
 			
@@ -114,4 +132,55 @@ public class BoardDao {
 
 		return conn;
 	}
+	
+//	public boolean update(BoardVo vo) {
+//		boolean result = false;
+//		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		
+//		try {
+//			conn = getConnection();
+//			
+//			if("".equals(vo.getPassword())) {
+//				String sql = "update user set name=?, gender=? where no=?";
+//				pstmt = conn.prepareStatement(sql);
+//			
+//				pstmt.setString(1, vo.getName());
+//				pstmt.setString(2, vo.getGender());
+//				pstmt.setLong(3, vo.getNo());
+//			} else {
+//				String sql = "update user set name=?, password=?, gender=? where no=?";
+//				pstmt = conn.prepareStatement(sql);
+//			
+//				pstmt.setString(1, vo.getName());
+//				pstmt.setString(2, vo.getPassword());
+//				pstmt.setString(3, vo.getGender());
+//				pstmt.setLong(4, vo.getNo());
+//			}
+//			
+//			int count = pstmt.executeUpdate();
+//			
+//			//5. 결과 처리
+//			result = count == 1;
+//			
+//		} catch (SQLException e) {
+//			System.out.println("Error:" + e);
+//		} finally {
+//			try {
+//				if(pstmt != null) {
+//					pstmt.close();
+//				}
+//				
+//				if(conn != null) {
+//					conn.close();
+//				}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		return result;		
+//	}
+
 }

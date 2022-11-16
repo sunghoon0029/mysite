@@ -12,12 +12,12 @@ public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("a");
 		
-		if("writeform".equals(action)) {
-			
-		}else {
+		if("list".equals(action)){
 			request
 				.getRequestDispatcher("WEB-INF/views/board/list.jsp")
 				.forward(request, response);
+		}else if("modify".equals(action)){
+			
 		}
 	}
 
