@@ -27,7 +27,7 @@ public class UserController {
 		userService.join(userVo);
 		return "redirect:/user/joinsuccess";
 	}
-	
+
 	@RequestMapping("/joinsuccess")
 	public String joinsuccess() {
 		return "user/joinsuccess";
@@ -49,6 +49,7 @@ public class UserController {
 		session.setAttribute("authUser", authUser);
 		return "redirect:/";
 	}
+	
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
