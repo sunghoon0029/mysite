@@ -8,7 +8,7 @@
 		 order by reg_date desc
 		]]>
 	</select>
-	
+
 	<insert id="insert" parameterType="guestbookvo">
 		<![CDATA[
 		insert
@@ -18,10 +18,10 @@
 		<selectKey keyProperty="no" resultType="long" order="AFTER">
 			<![CDATA[
 			select last_insert_id()
-			]]>			
+			]]>
 		</selectKey>
 	</insert>
-	
+
 	<delete id="deleteByNoAndPassword" parameterType="map">
 		<![CDATA[
 		delete
